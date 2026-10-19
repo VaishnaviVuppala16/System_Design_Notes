@@ -1,0 +1,223 @@
+1. What Is System Design? — Complete Notes
+System Design Fundamentals • Beginner to Advanced Understanding • Notes for Your Notebook
+1.1 Definition of System Design
+- System design is the process of planning, designing, and organizing the components of a software application so that they work together to achieve a specific goal.
+- It explains how different parts of a software system communicate, how data flows between them, how data is stored, and how the system handles users and requests.
+- It helps us decide which technologies, databases, APIs, servers, and architectural patterns should be used to build a reliable and efficient application.
+- The goal is not just to make an application work. The goal is to make it work correctly, efficiently, securely, and reliably, even when the number of users and requests increases.
+Simple definition to remember:
+
+System design is the process of deciding how to build a software system, including its components, their interactions, data storage, communication, and ability to handle growth.
+Example: Designing an online shopping application
+Imagine you are building an application like Amazon.
+
+Users should be able to:
+- Register and log in.
+- Search for products.
+- View product details.
+- Add products to a cart.
+- Place orders.
+- Make payments.
+- Track deliveries.
+Before writing code, you need to answer several questions.
+- Where will user information be stored?
+- How will the application search thousands or millions of products?
+- How will orders be saved?
+- How will payment processing work?
+- How will the application handle 100 users and later 1 million users?
+- What happens if a server crashes during an order?
+- How will we prevent the same payment from being processed twice?
+- How will we protect customer information?
+Answering these questions and planning the solutions is system design.
+
+1.2 Why Do We Need System Design?
+System design is important because a software application involves much more than writing functions and classes.
+
+Consider an application that initially supports 100 users. It may work perfectly. However, when 100,000 users start using it simultaneously, the application might become slow or fail.
+
+System design helps us anticipate and solve these problems.
+Main reasons
+1. Scalability
+   - The system should handle increasing numbers of users, requests, and data.
+   - Example: A shopping application grows from 1,000 daily users to 1 million daily users.
+2. Performance
+   - The system should respond to user requests quickly.
+   - Example: A product search should return results without making users wait several seconds unnecessarily.
+3. Reliability
+   - The system should perform its intended functions correctly and consistently.
+   - Example: An order should not disappear after the user successfully places it.
+4. Availability
+   - The system should remain accessible when users need it.
+   - Example: A banking application should remain operational even if one server fails.
+5. Maintainability
+   - Developers should be able to fix bugs, update features, and modify code without breaking unrelated functionality.
+   - Example: Adding a new payment method should not require rewriting the entire shopping application.
+6. Security
+   - The system should protect sensitive information and prevent unauthorized access.
+   - Example: One user must not be able to access another user's bank account.
+7. Cost optimization
+   - The system should use infrastructure and computing resources efficiently.
+   - Example: Avoid running unnecessarily large servers when the application has very few users.
+8. Fault tolerance
+   - The system should continue operating, perhaps with reduced functionality, when some components fail.
+   - Example: If one application server fails, another server continues processing requests.
+9. Data consistency
+   - The system should maintain correct data across operations and components.
+   - Example: If a product has only one item left, two customers should not both successfully purchase that same item unless the business explicitly supports backorders.
+10. Extensibility
+    - The system should support future features without requiring a complete redesign.
+    - Example: An existing shopping application should be able to introduce subscriptions or a recommendation engine.
+
+1.3 System Design vs. Coding
+Both are important, but they solve different problems.
+Coding	System design
+Focuses on implementing functionality.	Focuses on the structure of the complete system.
+Deals with functions, classes, algorithms, and syntax.	Deals with services, databases, communication, scaling, and architecture.
+Answers: How should this function work?	Answers: How should all components work together?
+Example: Write a Python function to create an order.	Example: Decide how order creation, payment, inventory, and storage should interact.
+Example
+Suppose you write this Python code:
+def calculate_total(price, quantity):    return price * quantity
+
+
+
+This is coding. It calculates the total price.
+
+However, in a real shopping application, system design asks additional questions:
+- Where does the product price come from?
+- How is the price validated?
+- How does the frontend send the request?
+- Which backend service calculates the order total?
+- Where is the order stored?
+- What happens if the database is unavailable?
+- How is the final amount protected from unauthorized modification?
+Remember: Coding builds individual pieces. System design determines how those pieces fit together into a complete system.
+
+1.4 Types of System Design
+There are two major categories commonly discussed in software engineering.
+1. High-Level Design (HLD)
+High-Level Design describes the overall architecture of the application and how its major components communicate.
+
+It focuses on:
+- Clients and frontend applications.
+- Servers and backend services.
+- APIs and communication.
+- Databases and caches.
+- Message queues.
+- Load balancers.
+- Service boundaries.
+- Scaling and deployment.
+Example: Deciding that an online shopping application will use a frontend, an API gateway, product and order services, a database, and a cache.
+
+2. Low-Level Design (LLD)
+Low-Level Design describes the internal structure and implementation of individual components.
+
+It focuses on:
+- Classes and objects.
+- Methods and interfaces.
+- Data models.
+- Database tables and relationships.
+- Design patterns.
+- Class diagrams.
+- Error handling.
+- Detailed business logic.
+Example: Designing the Order class with attributes such as order_id, customer_id, items, total_amount, and methods to calculate totals and update order status.
+
+HLD vs. LLD: Example
+Suppose you are designing a food delivery application.
+- HLD decides that the application needs customer, restaurant, order, payment, and delivery components.
+- LLD decides how the Order class is structured, what its methods do, and how order status transitions are validated.
+Both are necessary. HLD establishes the overall structure; LLD explains how individual parts are built.
+
+1.5 Main Components of a Software System
+To understand system design deeply, you must understand the major building blocks.
+1. Client
+
+Browser, mobile app, or desktop app
+
+2. Load Balancer / API Gateway
+
+Routes requests and applies access rules
+
+3. Backend / Application Services
+
+Business logic, validation, and processing
+
+4. Database
+
+Persistent storage
+
+
+5. Cache
+
+Fast access to frequently used data
+
+
+
+Simplified architecture. Actual applications may include additional components and different communication paths.
+
+1. Client
+- A client is the application or device that initiates a request to a system.
+- It presents information to users and collects their actions.
+- Examples include web browsers, mobile applications, and desktop applications.
+- Technologies include React, Angular, HTML, CSS, and mobile frameworks.
+Example: You open a shopping website and click the Search button. The browser acts as the client.
+2. Server
+- A server receives requests, performs processing, and returns responses.
+- It can authenticate users, validate inputs, execute business logic, and communicate with databases.
+- A server can be a physical machine, a virtual machine, or a cloud-hosted computing environment.
+Example: A FastAPI backend receives a request to retrieve product details and returns the result.
+3. API
+- API stands for Application Programming Interface.
+- It defines how different software components communicate.
+- An API specifies the available operations, required inputs, and expected outputs.
+- HTTP APIs commonly use methods such as GET, POST, PUT, PATCH, and DELETE.
+Example:
+GET /api/products/101
+
+
+The request asks the backend to retrieve product 101.
+
+A possible response:
+{
+  "id": 101,
+  "name": "Laptop",
+  "price": 55000
+}
+
+
+4. Database
+- A database stores information so that it can be retrieved, updated, and managed.
+- Relational databases store structured data in tables.
+- NoSQL databases support several other data models, including documents and key-value pairs.
+- Database selection depends on data relationships, query patterns, consistency needs, and scale.
+Examples:
+- Relational: PostgreSQL, MySQL.
+- Document: MongoDB.
+- Key-value: Redis can also be used as a database, cache, or both depending on the use case.
+5. Cache
+- A cache stores frequently accessed or computationally expensive data in a faster storage layer.
+- It reduces repeated work and can reduce database load.
+- Cached data may become outdated, so the design must define when it is refreshed or invalidated.
+Example: A shopping website caches popular product details so every request does not need to query the database.
+6. Load balancer
+- A load balancer distributes incoming requests across multiple backend instances.
+- It can improve availability and prevent a single server from becoming overloaded.
+- Health checks can help it avoid sending traffic to unhealthy instances.
+Example: If three backend servers are running, a load balancer can distribute requests among them.
+7. Message queue
+- A message queue enables components to exchange work asynchronously.
+- A producer publishes a message, and a consumer processes it.
+- This separates the request that starts an operation from the work that can happen later.
+Example: After an order is placed, a message can trigger an email notification without forcing the customer to wait for the email to be sent.
+
+Technologies include RabbitMQ, Apache Kafka, and cloud messaging services. They have different semantics and are not interchangeable in every design.
+8. Storage and file systems
+- Applications may need to store images, videos, documents, backups, and other large files.
+- Object storage is commonly used for these files, while a database stores related metadata and references.
+Example: A shopping application stores product images in cloud object storage and saves each image's URL in the database.
+9. Monitoring and logging
+- Monitoring measures the health and performance of the system.
+- Logging records events that help developers investigate errors and understand application behavior.
+- Metrics may include request latency, error rate, traffic, memory usage, and CPU usage.
+Example: If an API suddenly takes five seconds to respond, monitoring helps identify whether the problem is in the backend, database, or another dependency.
