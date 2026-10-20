@@ -1,0 +1,56 @@
+## 1. Functional Requirements
+
+- Define what the system should do.
+- Specify the features and operations provided to users.
+- Describe how the system responds to user actions.
+- Focus on the business logic and application behavior.
+- Examples:
+  1. User registration and login.
+  2. Search for products.
+  3. Create, update, and delete records.
+  4. Place orders and process payments.
+  5. Generate short URLs.
+  6. Redirect users to original URLs.
+
+## 2. Non-Functional Requirements
+
+- Define how well the system should work.
+- Specify the quality attributes and constraints of the system.
+- Focus on performance, security, reliability, and efficiency.
+- Describe measurable targets wherever possible.
+- Examples:
+  1. Performance — respond to requests quickly.
+  2. Scalability — handle increasing users and requests.
+  3. Availability — remain accessible when required.
+  4. Reliability — perform operations correctly.
+  5. Security — protect data from unauthorized access.
+  6. Maintainability — make the system easy to modify.
+  7. Durability — preserve committed data.
+  8. Consistency — maintain correct data across operations.
+  9. Cost efficiency — optimize infrastructure expenses.
+  10. Fault tolerance — continue operating despite certain failures.
+
+## 3. Vertical Scaling (Scale Up)
+
+- Increase the resources of an existing server.
+- Add more CPU cores.
+- Increase RAM.
+- Increase storage capacity.
+- Improve the processing power of a single machine.
+- Usually easier to implement initially.
+- Has hardware and resource limits.
+- May require downtime during upgrades.
+- Does not automatically eliminate a single point of failure.
+- Example: Upgrade a server from 4 GB RAM to 32 GB RAM.
+
+## 4. Horizontal Scaling (Scale Out)
+
+- Add more servers or application instances.
+- Distribute requests across multiple servers.
+- Commonly use a load balancer.
+- Increase the system's capacity by adding instances.
+- Can improve availability when redundancy is properly configured.
+- Supports scaling different services independently.
+- Requires coordination between distributed components.
+- May introduce challenges with shared state, data consistency, and networking.
+- Example: Increase the number of backend instances from 1 to 5 behind a load balancer.
